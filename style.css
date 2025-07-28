@@ -141,3 +141,21 @@ section {
   opacity: 1;
   transform: none;
 }
+
+/* Light mode styles */
+.light-mode {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.light-mode .bg-gray-900 {
+  background-color: #ffffff;
+}
+
+.light-mode .bg-gray-800 {
+  background-color: #f3f3f3;
+}
+
+.light-mode .text-gray-300 {
+  color: #222222;
+}

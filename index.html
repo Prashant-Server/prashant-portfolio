@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prashant | Developer Portfolio</title>
+  <script>
+  if (localStorage.getItem("theme") === "light") {
+    document.documentElement.classList.add("light-mode");
+  }
+</script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="script.js"></script>
@@ -84,12 +89,15 @@
     
       <!-- Project 2 - Savtech Website -->
       <div class="bg-gray-800 p-4 rounded">
-        <img src="/assets/Savtech.png" alt="Savtech Website" class="rounded mb-2">
+        <img src="/assets/image savtech.jpg" alt="Savtech Website" class="rounded mb-2">
         <h3 class="text-xl font-semibold text-white">Savtech Company Website</h3>
         <p class="text-sm text-gray-300">
           A professional, responsive company website built for Savtech. Features include service showcase, contact form,
           SEO-friendly structure, and modern UI. Developed using HTML, Tailwind CSS, and basic JS for interaction.
         </p>
+        <a href="http://savtech.in" target="_blank" class="text-purple-400 hover:underline">
+          🔗 Live Demo
+        </a>
         </div>
     </div>
   </section>

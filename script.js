@@ -4,21 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     AOS.init({ duration: 800, once: true });
 
     // === Theme Toggle ===
-    const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("theme");
+  const themeToggle = document.getElementById("themeToggle");
+const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "light") {
-        document.body.classList.add("light-mode");
-        if (themeToggle) themeToggle.textContent = "🌙";
-    }
+// Apply saved theme on page load
+if (savedTheme === "light") {
+    document.documentElement.classList.add("light-mode");
+    if (themeToggle) themeToggle.textContent = "🌙";
+}
 
-    themeToggle?.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-        const isLight = document.body.classList.contains("light-mode");
+// Theme toggle handler
+themeToggle?.addEventListener("click", () => {
+    document.documentElement.classList.toggle("light-mode");
+    const isLight = document.documentElement.classList.contains("light-mode");
 
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-        themeToggle.textContent = isLight ? "🌙" : "🌞";
-    });
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+    themeToggle.textContent = isLight ? "🌙" : "🌞";
+});
 
     // === Load Projects from JSON ===
     fetch("projects.json")
