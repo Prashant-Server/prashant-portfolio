@@ -1,27 +1,46 @@
-// === AOS Init ===
+// === DOM Ready ===
 document.addEventListener("DOMContentLoaded", () => {
+    // === AOS Init ===
     AOS.init({ duration: 800, once: true });
 
-    // === Theme Load from LocalStorage ===
+    // === Theme Toggle ===
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "light") {
         document.body.classList.add("light-mode");
-        themeToggle.textContent = "🌙";
+        if (themeToggle) themeToggle.textContent = "🌙";
     }
 
     themeToggle?.addEventListener("click", () => {
         document.body.classList.toggle("light-mode");
+        const isLight = document.body.classList.contains("light-mode");
 
-        if (document.body.classList.contains("light-mode")) {
-            localStorage.setItem("theme", "light");
-            themeToggle.textContent = "🌙";
-        } else {
-            localStorage.setItem("theme", "dark");
-            themeToggle.textContent = "🌞";
-        }
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+        themeToggle.textContent = isLight ? "🌙" : "🌞";
     });
+
+    // === Load Projects from JSON ===
+    fetch("projects.json")
+        .then(res => res.json())
+        .then(projects => {
+            const projectContainer = document.querySelector("#projects .grid");
+            if (!projectContainer) return;
+
+            projectContainer.innerHTML = "";
+
+            projects.forEach(project => {
+                const card = document.createElement("div");
+                card.className = "bg-gray-800 p-4 rounded shadow-md";
+                card.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="rounded mb-3" loading="lazy">
+                    <h3 class="text-xl font-semibold text-white">${project.title}</h3>
+                    <p class="text-gray-300 text-sm">${project.description}</p>
+                `;
+                projectContainer.appendChild(card);
+            });
+        })
+        .catch(err => console.error("❌ Failed to load projects:", err));
 
     // === Contact Form Submit ===
     const contactForm = document.getElementById("contactForm");
@@ -30,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const formData = {
-                name: this.name.value,
-                email: this.email.value,
-                message: this.message.value,
+                name: this.name.value.trim(),
+                email: this.email.value.trim(),
+                message: this.message.value.trim(),
             };
 
             try {
@@ -51,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("❌ Failed to send message.");
                 }
             } catch (err) {
-                console.error("Submit error:", err);
+                console.error("❌ Submit error:", err);
                 alert("❌ Server error.");
             }
         });
