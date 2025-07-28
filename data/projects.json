@@ -1,0 +1,43 @@
+[
+    {
+        "title": "CRM Management System",
+        "description": "A full-featured CRM with employee management, payroll, and leave tracking built using Node.js, MongoDB, and EJS.",
+        "technologies": [
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "EJS",
+            "Bootstrap"
+        ],
+        "image": "images/crm.png",
+        "live": "https://crm-demo.vercel.app",
+        "github": "https://github.com/Prashant-Server/crm-project"
+    },
+    {
+        "title": "Portfolio Website",
+        "description": "A dark-themed developer portfolio with AOS animations, smooth scrolling, and a working contact form backend.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "AOS",
+            "Node.js"
+        ],
+        "image": "images/portfolio.png",
+        "live": "https://prashant-portfolio.vercel.app",
+        "github": "https://github.com/Prashant-Server/prashant-portfolio"
+    },
+    {
+        "title": "Quotation Generator",
+        "description": "Generate, edit, and email quotations for products and services. Includes PDF generation and admin panel.",
+        "technologies": [
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "PDFKit"
+        ],
+        "image": "images/quotation.png",
+        "live": "",
+        "github": "https://github.com/Prashant-Server/quotation-generator"
+    }
+]

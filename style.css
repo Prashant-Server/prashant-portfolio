@@ -1,184 +1,143 @@
-/* ==== Reset & Base ==== */
+/* === Base Reset === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #0e0e0e;
-  color: #f0f0f0;
+  color: #fff;
   line-height: 1.6;
-  padding: 2rem;
+  transition: background 0.3s, color 0.3s;
 }
 
-img {
-  max-width: 100%;
-}
-
-/* ==== Navigation ==== */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #111;
-  padding: 1rem;
-  z-index: 1000;
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  gap: 2rem;
-}
-
-nav a {
-  color: #f0f0f0;
+a {
+  color: inherit;
   text-decoration: none;
-  font-weight: bold;
 }
 
-nav a:hover {
-  color: #00ffd5;
+h1,
+h2,
+h3 {
+  font-weight: 600;
 }
 
-/* ==== Sections ==== */
+/* === Light Mode === */
+body.light-mode {
+  background-color: #f0f0f0;
+  color: #222;
+}
+
+body.light-mode .section-title span {
+  background: #e0e0ff;
+  color: #333;
+}
+
+/* === Theme Toggle Button === */
+#themeToggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #222;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+/* === Sections === */
 section {
-  padding: 6rem 0;
+  padding: 80px 10%;
   text-align: center;
 }
 
-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #00ffd5;
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
 }
 
-/* ==== Home Section ==== */
-#home h1 {
-  font-size: 3rem;
+.section-title span {
+  background: #624bff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: #fff;
 }
 
-#home span {
-  color: #00ffd5;
-}
-
-#home img {
-  margin-top: 2rem;
-  width: 180px;
-  border-radius: 50%;
-  border: 4px solid #00ffd5;
-}
-
-/* ==== Skills Grid ==== */
-.skills-grid {
+/* === Tech Stack Grid === */
+.tech-stack {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 16px;
+  background: #1b1b1b;
+  padding: 30px;
+  border-radius: 12px;
 }
 
-.skill {
-  background: #1a1a1a;
-  padding: 1rem 2rem;
+.tech-item {
+  background: #121212;
+  border: 1px solid #624bff;
+  padding: 12px 20px;
   border-radius: 8px;
-  color: #00ffd5;
-  font-weight: bold;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
 }
 
-/* ==== Projects ==== */
+.tech-item:hover {
+  background: #222;
+}
+
+/* === Projects Section === */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
 .project-card {
   background: #1a1a1a;
-  margin: 1rem auto;
-  padding: 1.5rem;
-  border-left: 4px solid #00ffd5;
-  max-width: 600px;
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.project-card h3 {
-  color: #fff;
-  margin-bottom: 0.5rem;
+.project-card:hover {
+  transform: scale(1.03);
 }
 
-.project-card a {
-  color: #00ffd5;
-  text-decoration: underline;
-}
-
-/* ==== Testimonials ==== */
-blockquote {
-  font-style: italic;
-  color: #ccc;
-  background: #1a1a1a;
-  padding: 1.5rem;
-  max-width: 600px;
-  margin: 1rem auto;
-  border-left: 4px solid #00ffd5;
-  border-radius: 6px;
-}
-
-/* ==== Contact Form ==== */
-form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-form input,
-form textarea {
+.project-card img {
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  background: #222;
+  display: block;
+}
+
+.project-card .content {
+  padding: 15px;
+  text-align: left;
+}
+
+.project-card .title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
   color: #fff;
-  border: 1px solid #00ffd5;
-  border-radius: 5px;
 }
 
-form button {
-  background: #00ffd5;
-  border: none;
-  color: #000;
-  padding: 0.75rem 2rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
+/* AOS Animation Helper */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-form button:hover {
-  background: #00c6a3;
-}
-
-/* ==== Theme Toggle Button ==== */
-.theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #00ffd5;
-  color: #000;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 2000;
-}
-
-/* ==== Responsive ==== */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  section {
-    padding: 4rem 1rem;
-  }
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
 }

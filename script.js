@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         themeToggle.textContent = "🌙";
     }
 
-    themeToggle.addEventListener("click", () => {
+    themeToggle?.addEventListener("click", () => {
         document.body.classList.toggle("light-mode");
 
         if (document.body.classList.contains("light-mode")) {
@@ -22,38 +22,38 @@ document.addEventListener("DOMContentLoaded", () => {
             themeToggle.textContent = "🌞";
         }
     });
-});
 
-// === Contact Form Submit ===
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-    contactForm.addEventListener("submit", async function (e) {
-        e.preventDefault();
+    // === Contact Form Submit ===
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-        const formData = {
-            name: this.name.value,
-            email: this.email.value,
-            message: this.message.value,
-        };
+            const formData = {
+                name: this.name.value,
+                email: this.email.value,
+                message: this.message.value,
+            };
 
-        try {
-            const response = await fetch("/api/contact", { // ✅ Updated for Vercel
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                });
 
-            const data = await response.json();
+                const data = await response.json();
 
-            if (data.success) {
-                alert("✅ Message sent successfully!");
-                this.reset();
-            } else {
-                alert("❌ Failed to send message.");
+                if (data.success) {
+                    alert("✅ Message sent successfully!");
+                    this.reset();
+                } else {
+                    alert("❌ Failed to send message.");
+                }
+            } catch (err) {
+                console.error("Submit error:", err);
+                alert("❌ Server error.");
             }
-        } catch (err) {
-            console.error("Submit error:", err);
-            alert("❌ Server error.");
-        }
-    });
-}
+        });
+    }
+});
